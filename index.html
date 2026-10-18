@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#edf2fb" />
+  <title>Atmos — Weather, at a glance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Atmos home"><span class="brand-mark" aria-hidden="true">✳</span><span>atmos</span></a>
+      <div class="topbar-note"><span class="live-dot"></span> Live weather, wherever you are</div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">YOUR LITTLE WINDOW TO THE WORLD</p>
+      <h1 id="page-title">A clearer view<br class="mobile-break" /> of <span>what’s outside.</span></h1>
+      <p class="intro-copy">Find the forecast for any place on earth.</p>
+      <form class="search-form" id="search-form" role="search">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.3 4.3"></path></svg>
+        <label class="sr-only" for="location-input">Search a city or location</label>
+        <input id="location-input" name="location" type="search" placeholder="Search a city or location…" autocomplete="off" required />
+        <button class="search-button" type="submit"><span>Search</span><span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="search-hint">Try Bengaluru, London, or Kathmandu</p>
+    </section>
+
+    <section id="status" class="status" aria-live="polite" hidden></section>
+    <section id="weather" class="weather-content" aria-live="polite" hidden>
+      <div class="weather-grid">
+        <article class="card current-card">
+          <div class="current-top"><div><p class="eyebrow card-eyebrow">CURRENT WEATHER</p><h2 id="place-name">—</h2><p id="local-time" class="local-time">—</p></div><span id="country-code" class="country-pill">—</span></div>
+          <div class="current-main"><div class="temperature-wrap"><span id="temperature" class="temperature">—</span><span class="degree">°</span><span class="unit">C</span></div><div class="condition-wrap"><img id="weather-icon" alt="" /><p id="condition">—</p></div></div>
+          <div class="feels-row"><span class="tiny-sun" aria-hidden="true">◌</span><span>Feels like <strong id="feels-like">—</strong></span></div>
+          <div class="high-low"><span>Today’s range</span><strong><span id="today-high">—</span><span class="range-divider">/</span><span id="today-low">—</span></strong></div>
+        </article>
+
+        <article class="card details-card">
+          <div class="card-heading"><div><p class="eyebrow card-eyebrow">THE DETAILS</p><h2>At a glance</h2></div><span class="heading-spark" aria-hidden="true">✳</span></div>
+          <div class="detail-grid">
+            <div class="detail-item"><span class="detail-icon humidity-icon" aria-hidden="true">◌</span><div><p>Humidity</p><strong id="humidity">—</strong></div></div>
+            <div class="detail-item"><span class="detail-icon wind-icon" aria-hidden="true">≈</span><div><p>Wind speed</p><strong id="wind">—</strong></div></div>
+            <div class="detail-item"><span class="detail-icon uv-icon" aria-hidden="true">☼</span><div><p>UV index</p><strong id="uv">—</strong></div></div>
+            <div class="detail-item"><span class="detail-icon cloud-icon" aria-hidden="true">◷</span><div><p>Local time</p><strong id="time-short">—</strong></div></div>
+          </div>
+        </article>
+      </div>
+
+      <section class="card forecast-card" aria-labelledby="forecast-title">
+        <div class="forecast-heading"><div><p class="eyebrow card-eyebrow">LOOKING AHEAD</p><h2 id="forecast-title">Today’s forecast</h2></div><div class="forecast-range"><span id="forecast-day">Today</span><strong><span id="forecast-high">—</span><span class="range-divider">/</span><span id="forecast-low">—</span></strong></div></div>
+        <div id="hourly-list" class="hourly-list"></div>
+      </section>
+      <p class="attribution">Weather data by <a href="https://www.weatherapi.com/" target="_blank" rel="noopener noreferrer">WeatherAPI.com</a></p>
+    </section>
+    <footer><span>Made for wherever you are.</span><span>°C <span class="footer-dot">·</span> Local time</span></footer>
+  </main>
+</body>
+</html>
